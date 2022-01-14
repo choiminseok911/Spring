@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+/* Sidebar List */
+
+.adSidebar{
+	width: 200px;
+	height: 100vh;
+	
+	background-color: #000;
+}
+
+.adSidebar ul{
+	margin: 0;
+	padding: 0;
+}
+
+.adSidebar ul li{
+	list-style: none;
+}
+
+.adSidebar ul li.active{
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	
+	background-color: #fcfcfc;
+}
+
+.adSidebar ul li a{
+	height: 60px;
+	
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	
+	color: #fff;
+	
+	text-decoration: none;
+}
+
+.adSidebar ul li.active a{
+	color: #000;
+}
+
+.adSidebar ul li a .admin-icon{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.adSidebar ul li a .admin-icon ion-icon{
+	font-size: 30px;
+}
+
+.adSidebar ul li a .admin-title{
+	font-size: 30px;
+}
+
+/* Sidebar Toggle */
+
+.toggle{
+	width: 60px;
+	height: 60px;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	background-color: #000;
+}
+
+.toggle ion-icon{
+	color: #fff;
+	font-size: 30px;
+	
+	cursor: pointer;
+}
+
+.toggle ion-icon.open,
+.toggle.active ion-icon.close{
+	display: block;
+}
+
+.toggle ion-icon.close,
+.toggle.active ion-icon.open{
+	display: none;
+} 

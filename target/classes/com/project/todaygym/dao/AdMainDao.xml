@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.todaygym.dao.AdMainDao">
+
+	<!-- 총원 구하기 -->
+	<select id="totalCnt" resultType="Integer">
+		SELECT COUNT(*) FROM MEMBER_TB
+	</select>
+
+	<!-- 나이대 별 출력 -->
+
+	<select id="ageGroup" parameterType="String"
+		resultType="com.project.todaygym.dto.AgeGroupDto">
+		select year, count(*) as agnum
+		from
+		(
+		select
+		floor((to_char(sysdate, 'yyyy') -
+		to_char(to_date(substr(m_birth,0,4),'rrrr'),'yyyy')) / 10) * 10 as
+		year
+		from m
+		)
+		group by year
+		having year > 0
+		order by year
+	</select>
+
+	<!-- 회원권 전체 수 -->
+	<select id="totalTicket" resultType="Integer">
+		SELECT COUNT(*) FROM
+		TICKET_TB
+	</select>
+
+	<!-- 지점 전체 수 -->
+	<select id="totalSpot" resultType="Integer">
+		SELECT COUNT(*) FROM SPOT_TB
+	</select>
+
+	<!-- 지점 오버뷰 -->
+	<select id="spotOverviewSelect"
+		resultType="com.project.todaygym.dto.SpotOverviewDto">
+		<![CDATA[
+		SELECT s_name, simg_sys FROM
+		(SELECT SPOT_TB.s_name, SIMG_TB.simg_sys FROM SPOT_TB, SIMG_TB WHERE
+		SPOT_TB.s_code = SIMG_TB.s_code ORDER BY SPOT_TB.s_code) WHERE ROWNUM <= 10
+		]]>
+	</select>
+
+	<!-- 리뷰 전체 수 -->
+	<select id="totalReview" resultType="Integer">
+		SELECT COUNT(*) FROM
+		REVIEW_TB
+	</select>
+</mapper>

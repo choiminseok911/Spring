@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* Common */
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.content-admin {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	background-color: #fff;
+}
+
+.content {
+	width: 100%;
+	height: 100vh;
+	background-color: #fcfcfc;
+}
+
+/* Ticket List */
+.listTable {
+	position: relative;
+	top: 60px;
+	width: 80%;
+	margin: auto;
+	border-collapse: collapse;
+}
+
+.listTable th {
+	border: 1px solid #000;
+}
+
+.listTable .listNav td {
+	height: 50px;
+}
+
+.listTable .listNav .listNavContainer {
+	display: flex;
+	justify-content: right;
+}
+
+.listTable .listTitle td{
+	padding: 10px;
+	text-align: center;
+	font-size: 1.5rem;
+	border-bottom: 5px double #000;
+}
+
+.listTable .ticketList td {
+	padding: 10px;
+	text-align: center;
+	border-bottom: 1px solid #fff;
+}
+
+.listTable .ticketList td a{
+	text-decoration: none;
+	color: #000;
+}
+
+.listTable .ticketList .button {
+	border-radius: 6px;
+}
+
+.listTable .ticketList .ticketOn {
+	border: none;
+	background-color: #00FF80;
+}
+
+.listTable .ticketList .ticketOff {
+	border: none;
+	background-color: #ff0000;
+}

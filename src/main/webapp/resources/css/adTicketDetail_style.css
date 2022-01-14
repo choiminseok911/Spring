@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+/* Common */
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.content-admin {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	background: #fff;
+}
+
+.content {
+	width: 100%;
+	height: 100vh;
+	background: #fcfcfc;
+	text-align: center;
+}
+
+h1{
+	border: 3px solid #0c0c0c;
+	border-radius: 3px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #0c0c0c;
+	color: #fcfcfc;
+}
+
+.content-admem {
+	width: 80%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+/* Ticket Detail */
+
+.detailTable{
+	width: 100%;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.detailTable th{
+	border-bottom: 5px double #0c0c0c;
+}
+
+.detailTable tbody td{
+	padding: 10px;
+	text-align: center;
+	margin: 0;
+	border-bottom: 2px inset #c0c0c0;
+}
+
+.detailTable tbody td.detailTitle{
+	width: 10%;
+}
+
+.detailTable tbody td.detailContent{
+	width: 40%;
+}
+
+.detailTable td a{
+	color: #000;
+	
+	text-decoration: none;
+}

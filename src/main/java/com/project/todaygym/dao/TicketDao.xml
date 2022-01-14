@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.todaygym.dao.TicketDao">
+	
+	<!-- 회원권 발급 -->
+	
+	<!-- 회원권 발급하기 -->
+	<insert id="ticketInsert"
+		parameterType="com.project.todaygym.dto.TicketDto"
+		useGeneratedKeys="true" keyProperty="t_no">
+
+		<selectKey keyProperty="t_no" resultType="Integer"
+			order="BEFORE">
+			SELECT TICKET_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO T
+		VALUES (${t_no}, #{m_id}, #{p_code}, #{o_code}, SYSDATE, DEFAULT)
+		
+	</insert>
+	
+	<!-- 마이페이지 -->
+	
+	<!-- 수강내역 가져오기 -->
+	<select id="classListSelect" parameterType="com.project.todaygym.dto.MyClassPageDto" resultType="com.project.todaygym.dto.MyClassDto">
+		
+		<![CDATA[
+		
+		SELECT * FROM
+		(SELECT ROWNUM AS RONUM, T_NO, M_ID, T_ISSUEDATE, T_USE, M_NAME, P_IMG, P_CATE, P_SUBCATE, O_MONTH FROM
+		(SELECT * FROM TICKETLIST WHERE m_id=#{m_id} ORDER BY T_NO DESC))
+		WHERE RONUM >= (#{start} * #{listCnt}) - (#{listCnt} - 1) AND RONUM <= #{start} * #{listCnt}
+		
+		]]>
+
+	</select>
+	
+	<!-- 전체 회원권 수 가져오기 -->
+	<select id="allTicketSelect" parameterType="String" resultType="Integer">
+		
+		SELECT COUNT(*) FROM T WHERE m_id=#{m_id}
+	
+	</select>
+
+</mapper>
